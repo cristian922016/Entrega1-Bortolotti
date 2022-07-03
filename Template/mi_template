@@ -1,7 +1,8 @@
 {% extends 'index.html' %} 
 
 {% block title  %}
-<h1>Vienvenidos a mi pagina!!.. 
-      Estamos trabajando duro para mejorar 
-      el desarrollo de este sitio. </h1>
+<h1>Hola,me llamo cristian,tengo 28 años,
+    y me gustaria aprender a programar, y dedicarme a esto. </h1>
 {% endblock title  %}
+
+{% block boton %}{% endblock boton %}
