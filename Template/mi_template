@@ -1,0 +1,7 @@
+{% extends 'index.html' %} 
+
+{% block title  %}
+<h1>Vienvenidos a mi pagina!!.. 
+      Estamos trabajando duro para mejorar 
+      el desarrollo de este sitio. </h1>
+{% endblock title  %}

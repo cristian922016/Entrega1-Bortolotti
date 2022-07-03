@@ -4,3 +4,7 @@ from django.shortcuts import render
 
 def una_vista(request):
     return render(request,'index.html')
+
+
+def segunda_vista(request):
+    return render(request,'mi_template')
