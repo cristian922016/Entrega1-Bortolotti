@@ -1,0 +1,22 @@
+{% extends 'index.html' %} 
+
+{% block title  %}{% endblock title  %}
+
+{% block carga_de_datos %}{% endblock carga_de_datos %}
+<p>
+<a href={% url 'Home' %}>Home</a>
+</p>
+<p>
+    <form action={% url 'datos_usuario' %}>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+<p>
+    <ul>                             
+        {%for block1 in datos_usuario%}
+        <li>{{block}}</li>
+        {%endfor%}
+    </ul>
+   
+</p>

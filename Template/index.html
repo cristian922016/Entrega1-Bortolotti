@@ -25,7 +25,7 @@
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
                 {% block title %}
-                    <h1 class="fst-italic lh-1 mb-4">Vienvenidos!!</h1>
+                    <h1 class="fst-italic lh-1 mb-4">Bienvenidos!!</h1>
                 {% endblock title %}
                     
         
@@ -33,8 +33,41 @@
                 <div class="container">
                     <a class="navbar-brand" href={% url 'Home' %}>Home</a>
                     <a class="navbar-brand" href={% url 'Datos' %}>Datos</a>
+                    <a class="navbar-brand" href={% url 'datos_usuario' %}>DatosUss</a>
+
                 </div>
             </nav>
+            {% block carga_de_datos %}
+            <h1>Inserta Tus Datos</h1>
+        <p>
+            <form action={% url 'Home' %} method="post">
+                {% csrf_token %}
+            
+            <p>   
+                <table>
+                  {{form.as_table}}
+            </form> 
+                </table>
+                 <button> Crear </button> 
+            </p>  
+        </p>
+               
+            {% endblock carga_de_datos %}
+
+
+
+
         
+
+
+
+            
+        </p>
+
+
+
+
+
+
     </body>
 </html>
