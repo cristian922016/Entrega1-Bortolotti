@@ -2,10 +2,8 @@
 
 {% block title  %}{% endblock title  %}
 
-{% block carga_de_datos %}{% endblock carga_de_datos %}
-<p>
-<a href={% url 'Home' %}>Home</a>
-</p>
+{% block carga_de_datos %}
+
 <p>
     <form action={% url 'datos_usuario' %}>
         {{form}}
@@ -13,10 +11,14 @@
     </form>
 </p>
 <p>
+    {% if datos_usuario %}
     <ul>                             
         {%for block1 in datos_usuario%}
-        <li>{{block}}</li>
+        <li>{{block1}}</li>
         {%endfor%}
     </ul>
-   
+    {% else %}
+    No se encontraron datos.
+    {% endif %}
 </p>
+{% endblock carga_de_datos %}

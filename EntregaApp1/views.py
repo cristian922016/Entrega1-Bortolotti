@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .form import BusquedaUss, FormBlock
 from .models import Block
@@ -18,13 +18,15 @@ def una_vista(request):
             if not fecha:
                 fecha = datetime.now()
             
-            block1 = Block(titulo=data.get('titutlo'),
+            block1 = Block(
+                          titulo=data.get('titulo'),
                           contenido=data.get('contenido'),
-                          fecha_creaccion=fecha 
-            )
+                          fecha_creaccion=fecha
+                          ) 
+            
             block1.save()
-            datos_usuario=Block.objects.all()
-            return render(request,'datos_usuario.html',{'datos_usuario':datos_usuario})
+            return redirect('datos_usuario')
+            
         else:
             return render(request,'index.html',{'form':form})
     
@@ -49,10 +51,10 @@ def segunda_vista(request):
 
 
 def Datos_usuario(request):
-    nombre_de_busqueda =request.GET.get('titulo')
+    titulo_de_busqueda =request.GET.get('titulo')
     
-    if nombre_de_busqueda:
-        listado_uss = Block.objects.filter()
+    if titulo_de_busqueda:
+        datos_usuario = Block.objects.filter(titulo__icontains=titulo_de_busqueda)
     else:
         datos_usuario=Block.objects.all()
     
