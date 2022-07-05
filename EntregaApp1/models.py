@@ -7,5 +7,5 @@ class Block(models.Model):
     fecha_creaccion=models.DateField()
     
     
-def __str__(self):
-        return f'El uss es : {self.nombre}'    
+    def __str__(self):
+        return f'El uss es : {self.titulo}'    
