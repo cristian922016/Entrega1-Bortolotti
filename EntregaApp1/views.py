@@ -5,6 +5,8 @@ from django.shortcuts import redirect, render
 from .form import BusquedaUss, FormBlock
 from .models import Block
 
+def primera_vista(request):
+    return render(request,'index.html')
 
 def una_vista(request):
     
@@ -28,11 +30,11 @@ def una_vista(request):
             return redirect('datos_usuario')
             
         else:
-            return render(request,'index.html',{'form':form})
+            return render(request,'index2.html',{'form':form})
     
     
     form_block=FormBlock()  
-    return render(request,'index.html',{'form': form_block} )
+    return render(request,'index2.html',{'form': form_block} )
 
 
 
