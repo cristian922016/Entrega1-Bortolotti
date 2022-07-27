@@ -1,5 +1,8 @@
 {% extends 'index2.html' %} 
 
+{% block title_head %}<title>datosuss</title>{% endblock title_head %}
+
+
 {% block title  %}{% endblock title  %}
 
 {% block carga_de_datos %}
@@ -14,7 +17,12 @@
     {% if datos_usuario %}
     <ul>                             
         {%for block1 in datos_usuario%}
-        <li>{{block1}}</li>
+        <li>
+            {{block1}}
+            <a href={% url 'editar' block1.id %}>Editar</a>
+            <a href={% url 'eliminar' block1.id %}>Eliminar</a>
+            <a href={% url 'Mostrar' block1.id %}>Mostrar</a>
+        </li>
         {%endfor%}
     </ul>
     {% else %}

@@ -1,5 +1,4 @@
 from datetime import datetime
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .form import BusquedaUss, FormBlock
@@ -62,3 +61,42 @@ def Datos_usuario(request):
     
     form =BusquedaUss()
     return render(request,'datos_usuario.html',{'datos_usuario':datos_usuario,'form':form})
+
+
+
+
+def Eliminar_dato(request,id):
+    ussuario=Block.objects.get(id=id)
+    ussuario.delete()
+    
+    
+    return redirect('datos_usuario')
+    
+    
+    
+    
+def Editar_dato(request,id):  
+    ussuario=Block.objects.get(id=id)
+    
+    if request.method == 'POST':
+        form = FormBlock(request.POST)
+        if form.is_valid():
+            ussuario.titulo = form.cleaned_data.get('titulo')
+            ussuario.contenido = form.cleaned_data.get('contenido')
+            ussuario.fecha_creaccion = form.cleaned_data.get('fecha_creaccion')
+            ussuario.save()
+            return redirect('datos_usuario')  
+        
+        else:
+            return render(request,'editar_dato.html',{'form':form,'ussuario':ussuario})
+    
+        
+    form_block=FormBlock(initial={'titulo':ussuario.titulo , 'contenido':ussuario.contenido , 'fecha_creaccion':ussuario.fecha_creaccion })  
+    return render(request,'editar_dato.html',{'form': form_block,'ussuario':ussuario} ) 
+
+
+
+def Mostrar_dato(request,id):
+    ussuario=Block.objects.get(id=id)
+    return render(request,'mostrar_dato.html',{'ussuario':ussuario})
+       

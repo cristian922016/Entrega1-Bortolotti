@@ -1,0 +1,37 @@
+{% extends 'index2.html' %} 
+
+{% block title_head %}<title>datosuss</title>{% endblock title_head %}
+
+
+{% block title  %}{% endblock title  %}
+
+{% block carga_de_datos %}
+
+<p>
+    <a href={% url 'datos_usuario' %}>Volver</a>
+</p>
+
+<p>
+  
+    <ul>                             
+        
+        <li>
+           
+            {{ussuario.titulo}}
+        
+        </li>
+        <li>
+           
+            {{ussuario.contenido}}
+        
+        </li>
+        <li>
+           
+            {{ussuario.fecha_creaccion}}
+        
+        </li>
+     
+    </ul>
+    
+</p>
+{% endblock carga_de_datos %}

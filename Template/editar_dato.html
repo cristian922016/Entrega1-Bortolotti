@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        {% block title_head %}{% endblock title_head%}
+        <title>editar</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
                 {% block title %}
-                    <h1 class="fst-italic lh-1 mb-4">Bienvenidos!!</h1>
+                    <h1 class="fst-italic lh-1 mb-4">Blog....</h1>
                 {% endblock title %}
                     
         
@@ -34,11 +34,27 @@
                     <a class="navbar-brand" href={% url 'Home' %}>Home</a>
                     <a class="navbar-brand" href={% url 'Datos' %}>Datos</a>
                     <a class="navbar-brand" href={% url 'datos_usuario' %}>DatosUss</a>
-                    <a class="navbar-brand" href={% url 'agregar' %}>Agregar</a>
+                    
 
                 </div>
             </nav>
+            {% block carga_de_datos %}
+            <h1>edita Tus Datos</h1>
+        <p>
+            <form action={% url 'editar' ussuario.id %} method="post">
+                {% csrf_token %}
             
+            <p>   
+                <table>
+                  {{form.as_table}}
+            </form> 
+                </table>
+                 <button> editar </button> 
+            </p>  
+        </p>
+               
+            {% endblock carga_de_datos %}
+
 
 
 
@@ -47,7 +63,7 @@
 
 
             
-        
+        </p>
 
 
 
